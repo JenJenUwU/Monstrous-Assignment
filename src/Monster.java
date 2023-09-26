@@ -8,6 +8,5 @@ public class Monster {
     private boolean badBreath;
     private double gpa;
     public Monster(){
-        mType =
     }
 }
