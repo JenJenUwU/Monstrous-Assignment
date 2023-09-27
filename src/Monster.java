@@ -1,3 +1,4 @@
+
 public class Monster {
     /**
      * Class Instance Variables
@@ -30,7 +31,8 @@ public class Monster {
         mName = name;
         mAge = age;
         mBreath = false;
-        mGPA = //0.0 to 4.0;
+        //Using
+        mGPA = MathUtils.round((Math.random() * 4.0), 1);
     }
 
     /**
@@ -47,6 +49,33 @@ public class Monster {
         mName = name;
         mAge = age;
         mBreath = badBreath;
-        mGPA = grossPointAverage;
+        mGPA = MathUtils.round(grossPointAverage, 1);
     }
+
+    /**
+     * toString function that returns the stats of monster
+     *
+     * @return mName's stats:
+     * Type: mType
+     * Age: mAge
+     * Gross point average: mGPA
+     * Have bad breath? mBreath
+     */
+    public String toString() {
+        return (mName + "'s stats:" + "\nType: " + mType + "\nAge: " + mAge + "\nGross point average: " + mGPA + "\nHave bad breath? " + mBreath);
+    }
+
+    public void timeWarp(int numberOfYears) {
+        mAge += numberOfYears;
+        /* explanation of mGPA += 0.1 * ((int) (Math.floor((double) numberOfYears / 100.0)));
+            1) cast numberOfYears into a double and divide by 100.0
+               ex: 123 -> 1.23
+            2) floor the number into a lower value to avoid rounding errors
+               ex: 1.23 -> 1.0
+            3) convert the double into a int
+               ex: 1.0 -> 1
+         */
+        mGPA += 0.1 * ((int) (Math.floor((double) numberOfYears / 100.0)));
+    }
+
 }
