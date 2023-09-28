@@ -1,22 +1,29 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Please enter the type of your monster: ");
-        String monsterType = input.nextLine();
-        System.out.println("Please enter the name of your monster: ");
-        String monsterName = input.nextLine();
-        System.out.println("Please enter then age of your monster: ");
-        int monsterAge = input.nextInt();
-        System.out.println("Does your monster have bad breath? ");
-        boolean monsterBreath = input.nextBoolean();
-        System.out.println("Please enter the gross point average of your monster: ");
-        double monsterGPA = input.nextDouble();
-        //clear buffer
-        input.nextLine();
+        int monsterCount;
+        int monsterType;
+        ArrayList<Monster> monsterArrayList = new ArrayList<>();
 
-        Monster monsterTest = new Monster(monsterType, monsterName, monsterAge, monsterBreath, monsterGPA);
-        System.out.println(monsterTest);
+        while (true) {
+            System.out.println("\nEnter your desired monster type:\n1 for custom type,name,age,breath smell and gross point average\n2 for custom name and age\n0 to exit creation\nall other integers for a default monster");
+            monsterType = input.nextInt();
+            if (monsterType == 0) {
+                break;
+            } else {
+                monsterArrayList.add(MonsterCreation.create(monsterType));
+            }
+        }
+        monsterCount = monsterArrayList.size();
+
+        for (int i = 0; i < monsterCount; i++) {
+            System.out.println(monsterArrayList.get(i));
+        }
+        /*
+        double percentEvil = monsterTest.percentEvil();
+        System.out.println("Monster's evil percentage: " + percentEvil);*/
     }
 }
