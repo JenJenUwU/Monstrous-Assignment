@@ -151,7 +151,7 @@ public class Monster {
      * Have bad breath? mBreath
      */
     public String toString() {
-        return ("\n" + mName + "'s stats:" + "\nType: " + mType + "\nAge: " + mAge + "\nGross point average: " + mGPA + "\nHave bad breath? " + mBreath);
+        return (mName + "'s stats:" + "\nType: " + mType + "\nAge: " + mAge + "\nGross point average: " + mGPA + "\nHave bad breath? " + mBreath);
     }
 
     public void timeWarp(int numberOfYears) {
@@ -193,6 +193,18 @@ public class Monster {
     public double percentEvil() {
         //only run if the monster has name so dividing by 0 error doesn't occur
         if (mName != null) {
+            /* explanation of returned value
+                1) obtain the string value in all lower cased so capital A does not get ignored
+                   ex: JAY -> jay
+                2) receive the index of "a" and add 1 to it
+                   ex: jay -> 1+1 = 2
+                3) divide the double of index+1 by the double of the string length
+                   ex: 2.0/3.0 -> 0.6667
+                4) since its in decimal format, multiply the result by 100 to make it in percentage
+                   ex: 0.6667 -> 66.67
+                5) using the round function to round it to 1 decimal
+                   ex: 66.67-> 66.7
+             */
             return MathUtils.round(((double) (mName.toLowerCase().indexOf("a") + 1) / (double) mName.length() * 100), 1);
         } else {
             return 0;
