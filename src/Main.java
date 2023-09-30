@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 /**
  * Extra features
- * 1) Catching errors (user input, dividing by zero, gpa not in range)
+ * 1) Catching errors (type errors, dividing by zero, gpa not in range)
  * 2) Creating new files for repeating functions - MathUtils.round() and MonsterCreation.create()
  * 3) Using dynamic array to store pointers to created monster object
  * 4)
@@ -20,31 +20,23 @@ public class Main {
         //dynamic array that stores every monster class
         ArrayList<Monster> monsterArrayList = new ArrayList<>();
 
+        //initialize the three default monsters
+        monsterArrayList.add(new Monster());
+        monsterArrayList.add(new Monster("Kiza", 200));
+        monsterArrayList.add(new Monster("", "", 0, false, 0));
+
         //loop to create however many monster the user wishes
         while (true) {
             //clarify parameters
             System.out.println("\nEnter your desired monster type:\n1 for custom type,name,age,breath smell and gross point average\n2 for custom name and age\n0 to exit creation\nall other integers for a default monster");
-            //loop to ensure no type error occurs
-            while (true) {
-                try {
-                    //receive user input
-                    monsterType = input.nextInt();
-                    //break loop if no error occurs
-                    break;
-                } catch (Exception e) {
-                    //if catches an error, state the condition to the user
-                    System.out.println("The type of monster has to be a integer");
-                    System.out.println("Enter your desired monster type:\n1 for custom type,name,age,breath smell and gross point average\n2 for custom name and age\n0 to exit creation\nall other integers for a default monster");
-                    //clears buffer
-                    input.next();
-                }
-            }
+            //receive the type of monster
+            monsterType = CaseCatcher.typeErrorInt("", "The type of monster has to be a integer\nEnter your desired monster type:\n1 for custom type,name,age,breath smell and gross point average\n2 for custom name and age\n0 to exit creation\nall other integers for a default monster");
 
-            //if input is zero, break the loop, else use the function created in MonsterCreation.java
+            //if input is zero, break the loop, else use the function created in MonsterModification.java
             if (monsterType == 0) {
                 break;
             } else {
-                monsterArrayList.add(MonsterCreation.create(monsterType));
+                monsterArrayList.add(MonsterModification.create(monsterType));
             }
         }
         //update the total monster count after creation
