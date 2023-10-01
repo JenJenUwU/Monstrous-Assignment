@@ -11,7 +11,7 @@ public class CaseCatcher {
     public static int typeErrorInt(String txt1, String txt2) {
         //new scanner object
         Scanner input = new Scanner(System.in);
-        int returnValue = 0;
+        int returnValue;
         //loop to ensure no type error occurs
         while (true) {
             if (txt1 != null) {
@@ -43,7 +43,7 @@ public class CaseCatcher {
     public static double typeErrorDouble(String txt1, String txt2) {
         //new scanner object
         Scanner input = new Scanner(System.in);
-        double returnValue = 0;
+        double returnValue;
         //loop to ensure no type error occurs
         while (true) {
             if (txt1 != null) {
@@ -75,7 +75,7 @@ public class CaseCatcher {
     public static boolean typeErrorBoolean(String txt1, String txt2) {
         //new scanner object
         Scanner input = new Scanner(System.in);
-        boolean returnValue = false;
+        boolean returnValue;
         //loop to ensure no type error occurs
         while (true) {
             if (txt1 != null) {
