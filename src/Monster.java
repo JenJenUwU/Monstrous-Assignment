@@ -99,7 +99,7 @@ public class Monster {
     /**
      * Setter method of mType
      *
-     * @param newType
+     * @param newType new type of monster
      */
     public void setmType(String newType) {
         mType = newType;
@@ -108,7 +108,7 @@ public class Monster {
     /**
      * Setter method of mName
      *
-     * @param newName
+     * @param newName new name of monster
      */
     public void setmName(String newName) {
         mName = newName;
@@ -117,7 +117,7 @@ public class Monster {
     /**
      * Setter method of mAge
      *
-     * @param newAge
+     * @param newAge new age of monster
      */
     public void setmAge(int newAge) {
         mAge = newAge;
@@ -126,7 +126,7 @@ public class Monster {
     /**
      * Setter method of mBreath
      *
-     * @param newBreath
+     * @param newBreath whether the monster have bad breath or not
      */
     public void setmBreath(boolean newBreath) {
         mBreath = newBreath;
@@ -135,7 +135,7 @@ public class Monster {
     /**
      * Setter method of mGPA
      *
-     * @param newGPA
+     * @param newGPA new gross point average of monster
      */
     public void setmGPA(double newGPA) {
         mGPA = newGPA;
