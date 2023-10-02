@@ -210,4 +210,13 @@ public class Monster {
             return 0;
         }
     }
+
+    /**
+     * For each year the monster ages, add 1 to the sell price, for each 0.1 in gpa plus 10 to the sell price
+     *
+     * @return the final sell price
+     */
+    public double sellMonster() {
+        return ((double) mAge + (mGPA * 100));
+    }
 }

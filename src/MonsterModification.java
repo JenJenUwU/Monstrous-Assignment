@@ -79,21 +79,6 @@ public class MonsterModification {
             monster.timeWarp(yearsWarping);
             System.out.println("\n" + monster.getmName() + " has went from " + oldAge + " to " + monster.getmAge() + " years old after time warping");
             System.out.println(monster.getmName() + "'s GPA has went from " + oldGPA + " to " + monster.getmGPA() + " after time warping");
-        } else if (type == 2) {
-            //initialize variable
-            double spaCost;
-            int oldAge = monster.getmAge();
-            double oldGPA = monster.getmGPA();
-            boolean oldBreath = monster.getmBreath();
-
-            spaCost = CaseCatcher.typeErrorDouble("Please enter the cost of the spa " + monster.getmName() + " is having: ", "Cost hs to be a number");
-            monster.spaDay(spaCost);
-            System.out.println("\n" + monster.getmName() + " has went from " + oldAge + " to " + monster.getmAge() + " years old after the spa");
-            System.out.println(monster.getmName() + "'s GPA has went from " + oldGPA + " to " + monster.getmGPA() + " after the spa");
-            //if old breath is already false, do not print the change in old breath
-            if (oldBreath) {
-                System.out.println(monster.getmName() + "'s bad breath has vanished after the spa");
-            }
         } else if (type == 3) {
             //initialize variable
             double evilPercent;
@@ -155,6 +140,46 @@ public class MonsterModification {
                     break;
                 }
             }
+        }
+    }
+
+    /**
+     * Method that requires return of balance
+     *
+     * @param type         type of modification
+     * @param monster      pointer to the monster object
+     * @param currentPurse current purse of user
+     * @return total value of new purse
+     */
+    public static double balModify(int type, Monster monster, double currentPurse) {
+        if (type == 2) {
+            //initialize variable
+            double spaCost;
+            int oldAge = monster.getmAge();
+            double oldGPA = monster.getmGPA();
+            boolean oldBreath = monster.getmBreath();
+
+            while (true) {
+                spaCost = CaseCatcher.typeErrorDouble("Please enter the cost of the spa " + monster.getmName() + " is having: ", "Cost hs to be a number");
+                if (spaCost > currentPurse) {
+                    System.out.println("You do not have enough to purchase " + spaCost + " days of spa, your current balance has $" + currentPurse + " remaining");
+                } else {
+                    monster.spaDay(spaCost);
+                    System.out.println("\n" + monster.getmName() + " has went from " + oldAge + " to " + monster.getmAge() + " years old after the spa");
+                    System.out.println(monster.getmName() + "'s GPA has went from " + oldGPA + " to " + monster.getmGPA() + " after the spa");
+                    //if old breath is already false, do not print the change in old breath
+                    if (oldBreath) {
+                        System.out.println(monster.getmName() + "'s bad breath has vanished after the spa");
+                    }
+                    System.out.println("You have $" + currentPurse + " remaining in your balance");
+                    currentPurse -= spaCost;
+                    return currentPurse;
+                }
+            }
+        } else {
+            currentPurse += monster.sellMonster();
+            System.out.println("Your new balance has $" + currentPurse);
+            return currentPurse;
         }
     }
 }
