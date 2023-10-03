@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 /**
  * Extra features
- * 1) Catching errors (type error, dividing by zero, gpa not in range)
- * 2) Creating new static classes for repeating functions - MathUtils.round(), MonsterModification.create(), MonsterModification.method(), and all the CaseCatcher methods.
- * 3) Using dynamic array to store pointers to created monster object
- * 4) Using user input for monster creation and modification
- * 5) Addition of purse variable to purchase spa and sell monster
+ * 1) Using user input for monster creation and modification
+ * 2) Catching errors (type error, dividing by zero, gpa not in range)
+ * 3) Creating new static classes for repeating functions - MathUtils.round(), MonsterModification.create(), MonsterModification.method(), and all the CaseCatcher methods
+ * 4) Addition of purse variable to purchase spa and sell monster
+ * 5) Using dynamic array to store pointers to created monster object
  */
 public class Main {
     public static void main(String[] args) {
@@ -70,14 +70,16 @@ public class Main {
             } else {
                 //receive the type of modification
                 int monsterModification = CaseCatcher.typeErrorInt("\nWhat would you like to do with " + monsterArrayList.get(monsterType - 1).getmName() + " ?\n1 for time warp\n2 for spa day\n3 for percent evil\n4 for name change\n5 for type change\n6 for age change\n7 for bad breath change\n8 for gross point average change\n9 to sell the monster\n0 to exit modification", "The type of modification has to be a integer");
-
                 //if input is 0 break the loop
                 //if the method requires a return statement (spa[2] and selling monster [9]) call balModify that returns the new purse
+                //else call the void methods
                 if (monsterModification == 0) {
                     break;
                 } else if (monsterModification == 9 || monsterModification == 2) {
+                    //modify the purse base on the modification
                     purse = MonsterModification.balModify(monsterModification, monsterArrayList.get(monsterType - 1), purse);
                     if (monsterModification == 9) {
+                        //if monster is being sold, remove it from the arraylist
                         monsterArrayList.remove(monsterType - 1);
                         monsterCount -= 1;
                     }
